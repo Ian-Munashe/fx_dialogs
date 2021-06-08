@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial attempt to make progress indicators, dialog and alert widgets

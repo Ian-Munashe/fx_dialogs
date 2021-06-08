@@ -1,6 +1,6 @@
 # fxdialogs
 
-A new Flutter package project.
+A lightweight plugin for showing progress indicators, dialogs and alerts for both Android and iOS devices.
 
 ## Getting Started
 
