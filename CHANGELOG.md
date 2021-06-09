@@ -4,7 +4,7 @@
 * Cleaner code.
 
 ## [0.0.2]
-* Added Linear Progress Dialog.
+* Added Linear Progress Dialog
 
 ## [0.0.1]
 
