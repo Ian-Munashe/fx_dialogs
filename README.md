@@ -1,6 +1,6 @@
 # fxdialogs
 
-This flutter package provides aesthetically designed dialog box with progress indicators.
+This flutter package provides designed dialog box with progress indicators.
 
 ## Simple Usage
 To use this plugin, add `fxdialogs` as a
