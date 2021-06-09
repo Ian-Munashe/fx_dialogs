@@ -4,7 +4,7 @@ This flutter package provides designed dialog box with progress indicators.
 
 ## Simple Usage
 To use this plugin, add `fxdialogs` as a
-[dependency in your pubspec.yaml file](https://pub.dev/packages/dialogs/install).
+[dependency in your pubspec.yaml file](https://pub.dev/packages/fxdialogs/install).
 
 ### Implementation:
 
