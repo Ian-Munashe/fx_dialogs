@@ -8,12 +8,14 @@ class ProgressDialog extends StatelessWidget {
   final Color? progressIndicatorColor;
   final Color? backgroundColor;
   final double? radius;
+  final ProgressType? progressType;
 
   const ProgressDialog({
     Key? key,
     this.style,
     this.radius,
     this.subtitle,
+    this.progressType,
     this.backgroundColor,
     this.progressIndicatorColor,
   }) : super(key: key);
@@ -25,17 +27,32 @@ class ProgressDialog extends StatelessWidget {
         child: Container(
           constraints: BoxConstraints(maxWidth: 300),
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LinearProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
-              SizedBox(height: 12),
-              Text(this.subtitle!, style: this.style),
-            ],
-          ),
+          child: _buildProgressIndicator,
         ),
       );
+
+  Widget get _buildProgressIndicator {
+    switch (this.progressType) {
+      case ProgressType.linear:
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LinearProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
+            SizedBox(height: 12),
+            Text(this.subtitle!, style: this.style),
+          ],
+        );
+      default:
+        return Row(
+          children: [
+            CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
+            SizedBox(width: 12),
+            Text(this.subtitle!, style: this.style),
+          ],
+        );
+    }
+  }
 }
 
 class FXInfoDialog extends StatelessWidget {
@@ -70,6 +87,7 @@ class FXInfoDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(this.radius!)),
         child: Container(
           padding: this.padding!,
+          width: MediaQuery.of(context).size.width * .7,
           constraints: this.constraints,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -83,7 +101,8 @@ class FXInfoDialog extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  _buildTextButton(context, title: "Cancel", onPressed: () => Navigator.pop(context)),
+                  if (this.dialogType == DialogType.warning)
+                    _buildTextButton(context, title: "Cancel", onPressed: () => Navigator.pop(context)),
                   _buildTextButton(context, title: "Okay", onPressed: this.onOkTap ?? () => Navigator.pop(context)),
                 ],
               ),
