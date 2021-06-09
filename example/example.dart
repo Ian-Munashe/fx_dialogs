@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fxdialogs/fxdialogs.dart';
 
@@ -26,7 +25,7 @@ class _MyAppState extends State<MyApp> {
               dialogType: DialogType.success,
               message: "Custom Dialog message",
             ),
-            child: Text("Success Dialog"),
+            child: Text("Open Success Dialog"),
           ),
 
           // Opening and show user linear progress indicator.
@@ -36,7 +35,7 @@ class _MyAppState extends State<MyApp> {
               progressType: ProgressType.linear,
               subtitle: "Loading...",
             ),
-            child: Text("Success Dialog"),
+            child: Text("Open Linear Progress Dialog"),
           ),
         ],
       ),

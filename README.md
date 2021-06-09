@@ -1,14 +1,43 @@
 # fxdialogs
 
-A lightweight plugin for showing progress indicators, dialogs and alerts for both Android and iOS devices.
+This flutter package provides aesthetically designed dialog box with progress indicators.
 
-## Getting Started
+## Simple Usage
+To use this plugin, add `fxdialogs` as a
+[dependency in your pubspec.yaml file](https://pub.dev/packages/dialogs/install).
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+### Implementation:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+* Import `import 'package:fxdialogs/fxdialogs.dart';`
+
+### Message Dialog
+
+* use `FXDialog` widget to call the **Message Dialog** .
+
+```
+ElevatedButton(
+    onPressed: () => FXDialog(
+        context,
+        dialogType: DialogType.success,
+        message: "Custom Dialog message",
+    ),
+    child: Text("Open Success Dialog"),
+),
+```
+### FX Progress indicator
+
+* use `FXDialog.progress()` widget to choose your preferred **Progress Indicator** .
+
+```
+ElevatedButton(
+    onPressed: () => FXDialog.progress(
+        context,
+        progressType: ProgressType.linear,
+        subtitle: "Loading...",
+    ),
+    child: Text("Open Linear Progress Dialog"),
+),
+```
+
+See the `example` directory for the complete sample app.
+
