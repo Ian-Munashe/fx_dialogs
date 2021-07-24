@@ -1,3 +1,6 @@
+## [0.0.3+2]
+Centered info dialog text.
+
 ## [0.0.3+1]
 * Added Circular and Linear Progress indicator widgets.
 * Added documentation.

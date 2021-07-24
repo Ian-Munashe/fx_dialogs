@@ -102,7 +102,7 @@ class FXInfoDialog extends StatelessWidget {
               SizedBox(height: 10),
               Icon(_renderDialogData[1], size: 60, color: _renderDialogData[2]),
               SizedBox(height: 10),
-              Text(this.message!, style: this.style),
+              Text(this.message!, textAlign: TextAlign.center, style: this.style),
               SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
