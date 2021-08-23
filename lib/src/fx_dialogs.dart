@@ -39,6 +39,7 @@ class FXDialog {
     EdgeInsets padding = const EdgeInsets.all(12),
     TextStyle titleStyle = const TextStyle(fontSize: 18),
     BoxConstraints constraints = const BoxConstraints(maxWidth: 400),
+    void Function()? onCancel,
     Function()? onConfirm,
   }) {
     showDialog(
@@ -49,7 +50,8 @@ class FXDialog {
         radius: radius,
         message: message,
         padding: padding,
-        onOkTap: onConfirm,
+        onCancel: onCancel,
+        onConfirm: onConfirm,
         titleStyle: titleStyle,
         dialogType: dialogType,
         buttonColor: buttonColor,

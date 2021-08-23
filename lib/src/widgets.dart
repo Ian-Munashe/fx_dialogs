@@ -23,8 +23,7 @@ class ProgressDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Dialog(
         backgroundColor: this.backgroundColor,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(this.radius!)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(this.radius!)),
         child: Container(
           constraints: BoxConstraints(maxWidth: 300),
           padding: const EdgeInsets.all(20.0),
@@ -39,9 +38,7 @@ class ProgressDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LinearProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    this.progressIndicatorColor!)),
+            LinearProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
             SizedBox(height: 12),
             Text(this.subtitle!, style: this.style),
           ],
@@ -49,9 +46,7 @@ class ProgressDialog extends StatelessWidget {
       default:
         return Row(
           children: [
-            CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    this.progressIndicatorColor!)),
+            CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
             SizedBox(width: 12),
             Text(this.subtitle!, style: this.style),
           ],
@@ -69,7 +64,8 @@ class FXInfoDialog extends StatelessWidget {
   final Color? buttonColor;
   final Color? backgroundColor;
   final DialogType? dialogType;
-  final void Function()? onOkTap;
+  final void Function()? onCancel;
+  final void Function()? onConfirm;
   final BoxConstraints? constraints;
 
   const FXInfoDialog({
@@ -78,7 +74,8 @@ class FXInfoDialog extends StatelessWidget {
     this.radius,
     this.message,
     this.padding,
-    this.onOkTap,
+    this.onCancel,
+    this.onConfirm,
     this.titleStyle,
     this.dialogType,
     this.constraints,
@@ -89,8 +86,7 @@ class FXInfoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Dialog(
         backgroundColor: this.backgroundColor,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(this.radius!)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(this.radius!)),
         child: Container(
           padding: this.padding!,
           width: MediaQuery.of(context).size.width * .7,
@@ -108,12 +104,16 @@ class FXInfoDialog extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   if (this.dialogType == DialogType.warning)
-                    _buildTextButton(context,
-                        title: "Cancel",
-                        onPressed: () => Navigator.pop(context)),
-                  _buildTextButton(context,
-                      title: "Okay",
-                      onPressed: this.onOkTap ?? () => Navigator.pop(context)),
+                    _buildTextButton(
+                      context,
+                      title: "Cancel",
+                      onPressed: this.onCancel ?? () => Navigator.pop(context),
+                    ),
+                  _buildTextButton(
+                    context,
+                    title: "Okay",
+                    onPressed: this.onConfirm ?? () => Navigator.pop(context),
+                  ),
                 ],
               ),
             ],
@@ -121,9 +121,7 @@ class FXInfoDialog extends StatelessWidget {
         ),
       );
 
-  TextButton _buildTextButton(BuildContext context,
-          {String title = "Button", Function()? onPressed}) =>
-      TextButton(
+  TextButton _buildTextButton(BuildContext context, {String title = "Button", Function()? onPressed}) => TextButton(
         child: Text(title, style: this.style!.apply(color: this.buttonColor)),
         onPressed: onPressed,
       );
@@ -131,17 +129,9 @@ class FXInfoDialog extends StatelessWidget {
   List get _renderDialogData {
     switch (this.dialogType) {
       case DialogType.success:
-        return [
-          "Success",
-          CupertinoIcons.checkmark_seal,
-          Colors.green.shade500
-        ];
+        return ["Success", CupertinoIcons.checkmark_seal, Colors.green.shade500];
       case DialogType.warning:
-        return [
-          "Warning",
-          CupertinoIcons.exclamationmark_triangle,
-          Colors.yellow.shade700
-        ];
+        return ["Warning", CupertinoIcons.exclamationmark_triangle, Colors.yellow.shade700];
       default:
         return ["Error!", CupertinoIcons.exclamationmark_circle, Colors.red];
     }

@@ -1,3 +1,6 @@
+## [0.0.3+3]
+Added custom function on Cancel button of warning dialog.
+
 ## [0.0.3+2]
 Centered info dialog text.
 
