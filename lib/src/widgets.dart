@@ -67,6 +67,7 @@ class FXInfoDialog extends StatelessWidget {
   final void Function()? onCancel;
   final void Function()? onConfirm;
   final BoxConstraints? constraints;
+  final TextAlign textAlign;
 
   const FXInfoDialog({
     Key? key,
@@ -81,6 +82,7 @@ class FXInfoDialog extends StatelessWidget {
     this.constraints,
     this.buttonColor,
     this.backgroundColor,
+    required this.textAlign,
   }) : super(key: key);
 
   @override
@@ -98,7 +100,7 @@ class FXInfoDialog extends StatelessWidget {
               SizedBox(height: 10),
               Icon(_renderDialogData[1], size: 60, color: _renderDialogData[2]),
               SizedBox(height: 10),
-              Text(this.message!, textAlign: TextAlign.center, style: this.style),
+              Text(this.message!, textAlign: this.textAlign, style: this.style),
               SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

@@ -1,6 +1,6 @@
 name: fxdialogs
 description: A new Flutter package project.
-version: 0.0.3+3
+version: 0.0.3+4
 homepage: https://github.com/Ian-Munashe/fx_dialogs
 
 environment:
@@ -17,5 +17,3 @@ dev_dependencies:
 
 flutter:
 
-  # assets:
-  #   - images/a_dot_burr.jpeg

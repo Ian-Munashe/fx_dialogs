@@ -34,6 +34,7 @@ class FXDialog {
     Color buttonColor = Colors.blue,
     Color backgroundColor = Colors.white,
     TextStyle style = const TextStyle(),
+    TextAlign textAlign = TextAlign.center,
     String message = "Custom dialog message",
     DialogType dialogType = DialogType.success,
     EdgeInsets padding = const EdgeInsets.all(12),
@@ -57,6 +58,7 @@ class FXDialog {
         buttonColor: buttonColor,
         constraints: constraints,
         backgroundColor: backgroundColor,
+        textAlign: textAlign,
       ),
     );
   }
