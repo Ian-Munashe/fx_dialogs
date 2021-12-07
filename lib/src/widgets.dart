@@ -23,7 +23,9 @@ class ProgressDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Dialog(
         backgroundColor: this.backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(this.radius!)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(this.radius!),
+        ),
         child: Container(
           constraints: BoxConstraints(maxWidth: 300),
           padding: const EdgeInsets.all(20.0),
@@ -38,17 +40,31 @@ class ProgressDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LinearProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
+            LinearProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                this.progressIndicatorColor!,
+              ),
+            ),
             SizedBox(height: 12),
-            Text(this.subtitle!, style: this.style),
+            Text(
+              this.subtitle!,
+              style: this.style,
+            ),
           ],
         );
       default:
         return Row(
           children: [
-            CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(this.progressIndicatorColor!)),
+            CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                this.progressIndicatorColor!,
+              ),
+            ),
             SizedBox(width: 12),
-            Text(this.subtitle!, style: this.style),
+            Text(
+              this.subtitle!,
+              style: this.style,
+            ),
           ],
         );
     }
@@ -88,7 +104,9 @@ class FXInfoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Dialog(
         backgroundColor: this.backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(this.radius!)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(this.radius!),
+        ),
         child: Container(
           padding: this.padding!,
           width: MediaQuery.of(context).size.width * .7,
@@ -96,11 +114,22 @@ class FXInfoDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(_renderDialogData[0], style: this.titleStyle),
+              Text(
+                _renderDialogData[0],
+                style: this.titleStyle,
+              ),
               SizedBox(height: 10),
-              Icon(_renderDialogData[1], size: 60, color: _renderDialogData[2]),
+              Icon(
+                _renderDialogData[1],
+                size: 60,
+                color: _renderDialogData[2],
+              ),
               SizedBox(height: 10),
-              Text(this.message!, textAlign: this.textAlign, style: this.style),
+              Text(
+                this.message!,
+                textAlign: this.textAlign,
+                style: this.style,
+              ),
               SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -124,7 +153,12 @@ class FXInfoDialog extends StatelessWidget {
       );
 
   TextButton _buildTextButton(BuildContext context, {String title = "Button", Function()? onPressed}) => TextButton(
-        child: Text(title, style: this.style!.apply(color: this.buttonColor)),
+        child: Text(
+          title,
+          style: this.style!.apply(
+                color: this.buttonColor,
+              ),
+        ),
         onPressed: onPressed,
       );
 
