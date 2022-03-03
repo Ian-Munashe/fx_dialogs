@@ -1,3 +1,6 @@
+## [0.0.3+5]
+Added animations to alert dialogs.
+
 ## [0.0.3+4]
 Fixed bugs.
 

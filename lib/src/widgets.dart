@@ -1,6 +1,7 @@
 import 'package:fxdialogs/src/fx_dialogs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ProgressDialog extends StatelessWidget {
   final String? subtitle;
@@ -9,6 +10,7 @@ class ProgressDialog extends StatelessWidget {
   final Color? backgroundColor;
   final double? radius;
   final ProgressType? progressType;
+  final double circularIndicatorStrokeWidth;
 
   const ProgressDialog({
     Key? key,
@@ -18,13 +20,14 @@ class ProgressDialog extends StatelessWidget {
     this.progressType,
     this.backgroundColor,
     this.progressIndicatorColor,
+    this.circularIndicatorStrokeWidth = 2,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Dialog(
-        backgroundColor: this.backgroundColor,
+        backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(this.radius!),
+          borderRadius: BorderRadius.circular(radius!),
         ),
         child: Container(
           constraints: BoxConstraints(maxWidth: 300),
@@ -34,7 +37,7 @@ class ProgressDialog extends StatelessWidget {
       );
 
   Widget get _buildProgressIndicator {
-    switch (this.progressType) {
+    switch (progressType) {
       case ProgressType.linear:
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -42,13 +45,13 @@ class ProgressDialog extends StatelessWidget {
           children: [
             LinearProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(
-                this.progressIndicatorColor!,
+                progressIndicatorColor!,
               ),
             ),
             SizedBox(height: 12),
             Text(
-              this.subtitle!,
-              style: this.style,
+              subtitle!,
+              style: style,
             ),
           ],
         );
@@ -56,14 +59,15 @@ class ProgressDialog extends StatelessWidget {
         return Row(
           children: [
             CircularProgressIndicator(
+              strokeWidth: circularIndicatorStrokeWidth,
               valueColor: AlwaysStoppedAnimation<Color>(
-                this.progressIndicatorColor!,
+                progressIndicatorColor!,
               ),
             ),
             SizedBox(width: 12),
             Text(
-              this.subtitle!,
-              style: this.style,
+              subtitle!,
+              style: style,
             ),
           ],
         );
@@ -75,7 +79,9 @@ class FXInfoDialog extends StatelessWidget {
   final String? message;
   final double? radius;
   final TextStyle? style;
+  final Widget? lottieIcon;
   final EdgeInsets? padding;
+  final bool? repeatAnimation;
   final TextStyle? titleStyle;
   final Color? buttonColor;
   final Color? backgroundColor;
@@ -93,10 +99,12 @@ class FXInfoDialog extends StatelessWidget {
     this.padding,
     this.onCancel,
     this.onConfirm,
+    this.lottieIcon,
     this.titleStyle,
     this.dialogType,
     this.constraints,
     this.buttonColor,
+    this.repeatAnimation,
     this.backgroundColor,
     required this.textAlign,
   }) : super(key: key);
@@ -119,18 +127,19 @@ class FXInfoDialog extends StatelessWidget {
                 style: this.titleStyle,
               ),
               SizedBox(height: 10),
-              Icon(
-                _renderDialogData[1],
-                size: 60,
-                color: _renderDialogData[2],
-              ),
-              SizedBox(height: 10),
+              lottieIcon ??
+                  Icon(
+                    _renderDialogData[1],
+                    size: 60,
+                    color: _renderDialogData[2],
+                  ),
+              SizedBox(height: 8),
               Text(
                 this.message!,
                 textAlign: this.textAlign,
                 style: this.style,
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
