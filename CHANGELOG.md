@@ -1,4 +1,4 @@
-## [1.0.0+1]
+## [0.1.0]
 FXDialogs now gives access to check for new app versions on App Store and Google Play Store
 
 ## [0.0.3+5]

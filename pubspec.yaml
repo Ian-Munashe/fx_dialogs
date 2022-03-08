@@ -1,6 +1,6 @@
 name: fxdialogs
 description: A Flutter package to use custom dialogs.
-version: 1.0.0
+version: 0.1.0
 homepage: https://github.com/Ian-Munashe/fx_dialogs
 
 environment:
@@ -11,7 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
   html: ^0.15.0
+  http: ^0.13.4
   lottie: ^1.2.2
+  collection: ^1.15.0
   url_launcher: ^6.0.20
   package_info_plus: ^1.4.0
 
