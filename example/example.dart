@@ -12,6 +12,19 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() async {
+    super.initState();
+
+    /// Checks for an app update on app init state.
+    final newVersion = FXNewVersion();
+    final status = await newVersion.getVersionStatus();
+    newVersion.showUpdateDialog(
+      context: context,
+      versionStatus: status!,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Flutter FXDialogs Example.")),

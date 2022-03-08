@@ -1,7 +1,6 @@
 import 'package:fxdialogs/src/fx_dialogs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class ProgressDialog extends StatelessWidget {
   final String? subtitle;
